@@ -1,68 +1,80 @@
-import java.util.Stack;
-class node{
+import java.io.*;
+import java.util.*;
+
+public class binarytree{
+  public static class Node {
     int data;
-    node left, right;
-    String[] Employee;
-    node(int data,String[] Employee,node left,node right){
-        this.data=data;
-        this.Employee=Employee;
-        this.left=left;
-        this.right=right;
-    }
-}
-public class binarytree {
-     
-    public static class pair{
-        node n;
-        int state;
-        pair(node n,int state){
-            this.n=n;
-            this.state=state;
-        }
-    }
-    public static void main(String[] args) {
-     Integer [] arr={1,2,4,null,null,5,null,null,null,3,6,null,null,7,null,null};
-     String[] Employee=new String[5];
-     /*for(int i=0;i<Employee.length;i++){
-         Employee[i]=sc.next();
-    }*/
-    node root =new node(arr[0],Employee, null, null);
-    pair p=new pair(root, 1);
-     Stack<pair> st=new Stack<>();
-     st.push(p);
-     int idx=0;
-     while(st.size()>0){
-      pair top=st.peek();
-      if(top.state==1){
-        idx++;
-        if(arr[idx]!=null){
-            top.n.left=new node(arr[idx], Employee, null, null);
-            pair lp=new pair(top.n.left , 1);
-            st.push(lp);
-        }
-        else{
-            top.n.left=null;
+    Node left;
+    Node right;
 
+    Node(int data, Node left, Node right) {
+      this.data = data;
+      this.left = left;
+      this.right = right;
+    }
+  }
+
+  public static class Pair {
+    Node node;
+    int state;
+
+    Pair(Node node, int state) {
+      this.node = node;
+      this.state = state;
+    }
+  }
+  public static void display(Node node) {
+    if (node == null) {
+      return;
+    }
+
+    String str = "";
+    str += node.left == null ? "." : node.left.data + "";
+    str += " <- " + node.data + " -> ";
+    str += node.right == null ? "." : node.right.data + "";
+    System.out.println(str);
+
+    display(node.left);
+    display(node.right);
+  }
+  public static Node construct(Integer[] arr) {
+    Node root = new Node(arr[0], null, null);
+    Pair rtp = new Pair(root, 1);
+
+    Stack<Pair> st = new Stack<>();
+    st.push(rtp);
+
+    int idx = 0;
+    while (st.size() > 0) {
+      Pair top = st.peek();
+      if (top.state == 1) {
+        idx++;
+        if (arr[idx] != null) {
+          top.node.left = new Node(arr[idx], null, null);
+          Pair lp = new Pair(top.node.left, 1);
+          st.push(lp);
+        } else {
+          top.node.left = null;
         }
         top.state++;
-      }
-      else if(top.state==2){
+      } else if (top.state == 2) {
         idx++;
-        if(arr[idx]!=null){
-            top.n.right=new node(arr[idx], Employee, null, null);
-            pair rp=new pair(top.n.left , 1);
-            st.push(rp);
-        }
-        else{
-            top.n.right=null;
-
+        if (arr[idx] != null) {
+          top.node.right = new Node(arr[idx], null, null);
+          Pair rp = new Pair(top.node.right, 1);
+          st.push(rp);
+        } else {
+          top.node.right = null;
         }
         top.state++;
-      }
-      else{
+      } else {
         st.pop();
       }
-     }
     }
-    
+    return root;
+  }
+  public static void main(String[] args) {
+    Integer[] arr={1,2,4,null,null,5,null,null,3,6,null,null,7,null,null};
+    display(construct(arr));
+  }
 }
