@@ -30,6 +30,39 @@ public class binarytree {
     pair p=new pair(root, 1);
      Stack<pair> st=new Stack<>();
      st.push(p);
+     int idx=0;
+     while(st.size()>0){
+      pair top=st.peek();
+      if(top.state==1){
+        idx++;
+        if(arr[idx]!=null){
+            top.n.left=new node(arr[idx], Employee, null, null);
+            pair lp=new pair(top.n.left , 1);
+            st.push(lp);
+        }
+        else{
+            top.n.left=null;
+
+        }
+        top.state++;
+      }
+      else if(top.state==2){
+        idx++;
+        if(arr[idx]!=null){
+            top.n.right=new node(arr[idx], Employee, null, null);
+            pair rp=new pair(top.n.left , 1);
+            st.push(rp);
+        }
+        else{
+            top.n.right=null;
+
+        }
+        top.state++;
+      }
+      else{
+        st.pop();
+      }
+     }
     }
     
 }
