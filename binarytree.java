@@ -1,17 +1,17 @@
 import java.util.Stack;
- class binarytree {
- 
-    public class node{
-        int data;
-        node left, right;
-        String[] Employee;
-        node(int data,String[] Employee,node left,node right){
-            this.data=data;
-            this.Employee=Employee;
-            this.left=left;
-            this.right=right;
-        }
+class node{
+    int data;
+    node left, right;
+    String[] Employee;
+    node(int data,String[] Employee,node left,node right){
+        this.data=data;
+        this.Employee=Employee;
+        this.left=left;
+        this.right=right;
     }
+}
+public class binarytree {
+     
     public static class pair{
         node n;
         int state;
@@ -26,7 +26,7 @@ import java.util.Stack;
      /*for(int i=0;i<Employee.length;i++){
          Employee[i]=sc.next();
     }*/
-    node root =new node(arr[0], Employee, null, null);
+    node root =new node(arr[0],Employee, null, null);
     pair p=new pair(root, 1);
      Stack<pair> st=new Stack<>();
      st.push(p);
