@@ -24,30 +24,6 @@ public class binarytree{
       this.state = state;
     }
   }
-  /*public static void display(Node node) {
-    if (node == null) {
-      return;
-    }
-
-    String str = "";
-    str += node.left == null ? "." : node.left.data + "";
-    str += " <- " + node.data + " -> ";
-    str += node.right == null ? "." : node.right.data + "";
-    System.out.println(str);
-
-    display(node.left);
-    display(node.right);
-
-  }*/
-  public static String displaydataEmployee(Node node) {
-    String[] t=node.Employee;
-    String st="";
-    for(int i=0;i<4;i++){
-      st=st+t[i];
-      
-    }
-    return st;
-  }
   public static void displaydata(Node node) {
     if (node == null) {
       return;
@@ -55,11 +31,10 @@ public class binarytree{
     String[] t=node.Employee;
     String st="";
     for(int i=0;i<4;i++){
-      st=st+t[i];
+      st=st+" "+t[i];
     }
-   
+   System.out.println(st);
   
-
     displaydata(node.left);
     displaydata(node.right);
   }
@@ -68,9 +43,6 @@ public class binarytree{
     Scanner sc=new Scanner(f);
     String s=sc.nextLine();
     String[] ceo=s.split(",");
-    /*for(int i=0;i<4;i++){
-      System.out.println(ceo[i]);
-    }*/
 
   Node root = new Node(arr[0],ceo, null, null);
    Pair rtp = new Pair(root, 1);
@@ -89,10 +61,6 @@ public class binarytree{
          top.node.left = new Node(arr[idx],m1, null, null);
           Pair lp = new Pair(top.node.left, 1);
           st.push(lp);
-          /*System.out.println(arr[idx]);
-          for(int i=0;i<4;i++){
-            System.out.print(m1[i]);
-          }*/
         } else {
           top.node.left = null;
         }
@@ -105,10 +73,6 @@ public class binarytree{
           top.node.right = new Node(arr[idx],m1, null, null);
           Pair rp = new Pair(top.node.right, 1);
           st.push(rp);
-          /*System.out.println(arr[idx]);
-          for(int i=0;i<4;i++){
-            System.out.print(m1[i]);
-          }*/
         } else {
           top.node.right = null;
         }
@@ -117,19 +81,15 @@ public class binarytree{
         st.pop();
       }
     }
+    sc.close();
     return root;
   }
   public static void main(String[] args)throws FileNotFoundException {
     Integer[] arr={1,2,4,null,null,5,null,null,3,6,null,null,7,null,null};
 
     Node t=construct(arr);
-    System.out.println(t.data);
-    String[] ts=t.Employee;
-    String st="";
-    for(int i=0;i<4;i++){
-      st=st+ts[i];
-    }
-    System.out.println(st);
+    
+    displaydata(t);
    
   }
 }
