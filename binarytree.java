@@ -84,12 +84,21 @@ public class binarytree{
     sc.close();
     return root;
   }
+
   public static void main(String[] args)throws FileNotFoundException {
     Integer[] arr={1,2,4,null,null,5,null,null,3,6,null,null,7,null,null};
-
-    Node t=construct(arr);
-    
-    displaydata(t);
-   
+   // Node t=construct(arr);
+   // displaydata(t);
+    System.out.println("----------------------------------------------------");
+    System.out.println(""+"|" +"             "+"Salary" +" "+"MENU"+"                          ");
+    System.out.println("----------------------------------------------------");
+    System.out.println("Enter your designation");
+    System.out.println("1.Employee");
+    System.out.println("2.Manager");
+    System.out.println("3.CEO");
+    System.out.println("----------------------------------------------------");
+    Scanner sc=new Scanner(System.in);
+    System.out.print("Designation:");
+    String st=sc.nextLine();
   }
 }
