@@ -2,6 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class binarytree{
+  static Node root;
   public static class Node {
     int data;
     Node left;
@@ -24,19 +25,21 @@ public class binarytree{
       this.state = state;
     }
   }
-  public static void displaydata(Node node) {
-    if (node == null) {
+  public static void displaydata(String data,Node node) {
+    System.out.println("alol");
+    if (data == node.Employee[0]) {
+      String[] t=node.Employee;
+      String st="";
+      for(int i=0;i<4;i++){
+        st=st+" "+t[i];
+      }
+      
+      System.out.println(st);
       return;
     }
-    String[] t=node.Employee;
-    String st="";
-    for(int i=0;i<4;i++){
-      st=st+" "+t[i];
-    }
-   System.out.println(st);
   
-    displaydata(node.left);
-    displaydata(node.right);
+    displaydata(data,node.left);
+    displaydata(data,node.right);
   }
   public static Node construct(Integer[] arr) throws FileNotFoundException{
     File f=new File("C:\\Users\\anugr\\Desktop\\Project DSA\\salary.txt");
@@ -44,7 +47,7 @@ public class binarytree{
     String s=sc.nextLine();
     String[] ceo=s.split(",");
 
-  Node root = new Node(arr[0],ceo, null, null);
+  root = new Node(arr[0],ceo, null, null);
    Pair rtp = new Pair(root, 1);
 
     Stack<Pair> st = new Stack<>();
@@ -87,10 +90,10 @@ public class binarytree{
 
   public static void main(String[] args)throws FileNotFoundException {
     Integer[] arr={1,2,4,null,null,5,null,null,3,6,null,null,7,null,null};
-   // Node t=construct(arr);
-   // displaydata(t);
+    construct(arr);
+   Password p=new Password();
     System.out.println("----------------------------------------------------");
-    System.out.println(""+"|" +"             "+"Salary" +" "+"MENU"+"                          ");
+    System.out.println(""+"|" +"             "+"Salary" +" "+"MENU"+"                           "+"|"+ " ");
     System.out.println("----------------------------------------------------");
     System.out.println("Enter your designation");
     System.out.println("1.Employee");
@@ -100,5 +103,13 @@ public class binarytree{
     Scanner sc=new Scanner(System.in);
     System.out.print("Designation:");
     String st=sc.nextLine();
+   String[] td= p.passowrdUsername(st);
+    if(td[1]=="true"){
+      Node t=root;
+       if(td[0]=="CEO"){
+        System.out.println(td[0]=="CEO");
+        displaydata(td[0],t);
+       }
+    }
   }
 }
