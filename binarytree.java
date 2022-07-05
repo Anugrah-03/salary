@@ -25,7 +25,7 @@ public class binarytree{
       this.state = state;
     }
   }
-  public static void displaydata(String data,Node node) {
+  public static void adisplaydata(String data,Node node) {
     System.out.println("alol");
     if (data == node.Employee[0]) {
       String[] t=node.Employee;
@@ -38,8 +38,8 @@ public class binarytree{
       return;
     }
   
-    displaydata(data,node.left);
-    displaydata(data,node.right);
+    adisplaydata(data,node.left);
+    adisplaydata(data,node.right);
   }
   public static Node construct(Integer[] arr) throws FileNotFoundException{
     File f=new File("C:\\Users\\anugr\\Desktop\\Project DSA\\salary.txt");
@@ -87,7 +87,12 @@ public class binarytree{
     sc.close();
     return root;
   }
-
+public static void displayContent(String[]check) {
+  if(check[0]=="CEO"){
+    adisplaydata(check[0],root);
+  }
+  
+}
   public static void main(String[] args)throws FileNotFoundException {
     Integer[] arr={1,2,4,null,null,5,null,null,3,6,null,null,7,null,null};
     construct(arr);
@@ -103,13 +108,9 @@ public class binarytree{
     Scanner sc=new Scanner(System.in);
     System.out.print("Designation:");
     String st=sc.nextLine();
-   String[] td= p.passowrdUsername(st);
-    if(td[1]=="true"){
-      Node t=root;
-       if(td[0]=="CEO"){
-        System.out.println(td[0]=="CEO");
-        displaydata(td[0],t);
-       }
-    }
+
+   String[] tds= p.passowrdUsername(st);
+   displayContent(tds);
+   sc.close();
   }
 }

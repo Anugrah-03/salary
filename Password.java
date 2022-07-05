@@ -1,6 +1,5 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.nio.file.FileSystemNotFoundException;
 import java.util.Scanner;
 
 public class Password {
@@ -15,20 +14,22 @@ public class Password {
       String password=sc.nextLine();
       String t=username+","+password;
       System.out.println("----------------------------------------------------");
+      sc.close();
       return t;
    }
    public String checkUsernamePassowrd(String[] l)throws FileNotFoundException{
       File f=new File("C:\\Users\\anugr\\Desktop\\Project DSA\\passwordUsername.txt");
-      boolean x=false;
       Scanner fsc=new Scanner(f);
       while(fsc.hasNextLine()){
          String t=fsc.nextLine();
          String[] ceo=t.split(",");
           if(ceo[1].contains(l[0])&&(ceo[2].contains(l[1]))){
             System.out.println("true");
+            fsc.close();
             return "true";
           }
    }
+   fsc.close();
    return "false";
 }
 
