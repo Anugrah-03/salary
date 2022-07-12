@@ -15,6 +15,7 @@ public class Password {
       String t=username+","+password;
       System.out.println("----------------------------------------------------");
       sc.close();
+
       return t;
    }
    public String checkUsernamePassowrd(String[] l)throws FileNotFoundException{
@@ -24,7 +25,6 @@ public class Password {
          String t=fsc.nextLine();
          String[] ceo=t.split(",");
           if(ceo[1].contains(l[0])&&(ceo[2].contains(l[1]))){
-            System.out.println("true");
             fsc.close();
             return "true";
           }
@@ -37,9 +37,10 @@ public class Password {
      if(d.contains("CEO")){
       String[] l=UsernamePassword().split(",");
       String c=checkUsernamePassowrd(l);
-      String[] st=new String[2];
-      st[0]=d;
-      st[1]=c;
+      String[] st=new String[3];
+      st[0]="CEO";
+      st[1]=l[0];
+      st[2]=c;
      return st ;
 
    }
